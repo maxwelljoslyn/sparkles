@@ -206,12 +206,12 @@ const MediaEditor = ({ attrs }) => {
 								},
 								hidden: state.selected && state.selected.url != md.url
 							}, m('div.item' + (state.selected && state.selected.url == md.url ? '.selected' : ''), [
-								(md.image || state.image) && m('img', { src: md.image || state.image, loading: 'lazy' }),
 								m('div', [
 									m('h4', md.title),
 									md.author && m('h5', md.author),
 									md.year && m('h5', md.year)
 								]),
+								(md.image || state.image) && m('img', { src: md.image || state.image, loading: 'lazy' })
 							]))),
 					state.searched && (!search || search.length === 0) && m('div', 'No results found'),
 					!state.selected && search && state.totalResults > search.length && m('div.item-pagination', [
