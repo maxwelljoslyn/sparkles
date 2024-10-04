@@ -44,7 +44,8 @@ const Proxy = {
 				headers: {
 					// ...(body && { 'Content-Type': 'application/json' }),
 					'Authorization': `Bearer ${session.access_token}`,
-					'x-micropub-endpoint': session.micropub
+				    'x-micropub-endpoint': session.micropub,
+				    'x-micropub-client-app': 'Maxparkle'
 				},
 				params: params,
 				body: body || null,
