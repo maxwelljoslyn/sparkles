@@ -31,7 +31,7 @@ const types = {
 			limit: 10,
 			q: query,
 			page: page,
-			fields: 'key,title,editions,author_name,author_key,cover_i'
+		    fields: 'key,title,editions,author_name,author_key,cover_i,first_publish_year' // MJ
 		}),
 		buildError: ({ status, response }) => Response.error({ statusCode: status }, response.error),
 		parseResponse: res => ({
