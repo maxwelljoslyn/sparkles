@@ -61,7 +61,6 @@ const MediaEditor = ({ attrs }) => {
 		return {
 			type: [ 'h-entry' ],
 			properties: {
-				summary: [ summary ],
 				...(image && { featured: [ image ] }),
 				published: [ state.published || dateInRFC3339() ],
 				[`${attrs.type}-of`]: [
