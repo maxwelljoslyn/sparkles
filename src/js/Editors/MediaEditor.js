@@ -4,6 +4,7 @@ import Alert from '../Components/Alert'
 import { Box } from '../Components/Box'
 import EntryPreview from './EntryPreview'
 import AdvancedOptions from './AdvancedOptions'
+import ManualEntryEditor from './ManualEntryEditor'
 import Rating from '../Components/Rating'
 import Proxy from '../Controllers/Proxy'
 import Store from '../Models/Store'
@@ -30,6 +31,16 @@ const parseQuery = string => {
 const MediaEditor = ({ attrs }) => {
 	const postTypes = Store.getSession('post-types') || []
 	const syndicateTo = Store.getSession('syndicate-to') || []
+
+	const updateSelectedBook = (key, value) => {
+	    state.selected = state.selected || {};
+	    state.selected[key] = value;
+	    if (key === 'id') {
+	    state.selected.id = `id:${value}`;
+	    }
+	}
+
+
 
 	let state = {
 		type: attrs.search?.options?.[0] || null,
@@ -208,6 +219,12 @@ const MediaEditor = ({ attrs }) => {
 						m('button', { disabled: state.totalResults < state.page * state.pageSize, onclick: e => submitSearch(e, ++state.page) }, 'next')
 					])
 				]),
+
+				m(ManualEntryEditor, {
+					state: state,
+					onchange: updateSelectedBook
+					}),
+
 				state.selected && m('form', {
 					onsubmit: post
 				}, [
