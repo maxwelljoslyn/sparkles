@@ -40,6 +40,7 @@ const MediaEditor = ({ attrs }) => {
 	}
 
 	const buildEntry = () => {
+	    // state.rating: a stringified number; rating: a string like ★★½
 		const rating = ratingToStars(state.rating)
 		const rewatched = state.progress == 'finished' && attrs?.type == 'watch' && state.rewatched
 
