@@ -238,7 +238,7 @@ const MediaEditor = ({ attrs }) => {
 						})
 					]),
 					attrs.progress?.length > 1 && m('label', [
-						'Status',
+						'Progress',
 						m('select', {
 							oninput: e => state.progress = e.target.value,
 							value: state.progress = state.progress
