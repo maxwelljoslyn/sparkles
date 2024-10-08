@@ -317,9 +317,10 @@ const EditorTypes = {
 			placeholder: 'Search by title or ISBN'
 		},
 		progress: [
-			{ key: 'want', label: 'Want to Read', title: 'Wants to Read' },
+			{ key: 'want', label: 'Want to Read', title: 'Want to Read' },
 			{ key: 'started', label: 'Reading', title: 'Reading' },
-			{ key: 'finished', label: 'Read', title: 'Finished Reading' }
+		    { key: 'finished', label: 'Finished', title: 'Finished Reading' },
+			{ key: 'abandoned', label: 'Abandoned', title: 'Abandoned' }
 		]
 	},
 	Listen: {
