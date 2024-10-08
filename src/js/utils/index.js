@@ -1,7 +1,15 @@
 const currentTime = () => Math.floor(Date.now() / 1000)
 
 const formatDate = t => (new Date(t * 1000)).toLocaleDateString()
-const dateInRFC3339 = () => (new Date()).toISOString().split('T')[0]
+// const dateInRFC3339 = () => (new Date()).toISOString().split('T')[0]
+
+const dateInRFC3339 = () => {
+  const date = new Date();
+  const year = date.getFullYear();
+  const month = String(date.getMonth() + 1).padStart(2, '0');
+  const day = String(date.getDate()).padStart(2, '0');
+  return `${year}-${month}-${day}`;
+}
 
 // https://indieauth.spec.indieweb.org/#url-canonicalization
 const canonicalURL = urlString => {
