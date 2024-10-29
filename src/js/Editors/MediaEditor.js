@@ -89,6 +89,7 @@ const MediaEditor = ({ attrs }) => {
 					}
 				],
 				// custom properties
+				...(state.category && state.category.length > 0 && { category: state.category }),
 				...(state.progress && { progress: [ state.progress ] }),
 				...(state.progress == 'finished' && {
 					...(state.content && { content: [ state.content ] }),
@@ -275,6 +276,19 @@ const MediaEditor = ({ attrs }) => {
 							value: state.content || ''
 						}),
 					],
+				    attrs.components?.map(component => {
+					    if (component.type === 'category') {
+						return m('label', [
+						    'Categories',
+						    m('input', {
+							type: 'text',
+							placeholder: 'Add categories...',
+							onchange: e => state.category = e.target.value.split(',').map(c => c.trim()),
+							value: (state.category || []).join(', ')
+						    })
+						])
+					    }
+					}),
 					m(AdvancedOptions, {
 						state: state,
 						syndicateTo: syndicateTo,
@@ -321,7 +335,8 @@ const EditorTypes = {
 			{ key: 'started', label: 'Reading', title: 'Reading' },
 		    { key: 'finished', label: 'Finished', title: 'Finished Reading' },
 			{ key: 'abandoned', label: 'Abandoned', title: 'Abandoned' }
-		]
+		],
+		components: [{ type: 'category' }]
 	},
 	Listen: {
 		title: 'Listen',
